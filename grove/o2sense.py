@@ -44,7 +44,7 @@ def main():
     print('{clock} Detected Value: {capture}'.format(clock=clock, capture=capture))
 
     data = {}
-    data[time_stamp] = capture
+    data[str(time_stamp)] = capture
     with open(file_name, 'w') as file:
         json.dump(data, file)
  
