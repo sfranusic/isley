@@ -45,8 +45,16 @@ def main():
 
     data = {}
     data[str(time_stamp)] = capture
-    with open(file_name, 'w') as file:
-        json.dump(data, file)
+
+    if os.path.exists(file_name) == False:
+        with open(file_name, 'w') as file:
+            json.dump({}, file)
+    
+    with open(file_name, 'r+') as file:
+        fileData = json.load(file)
+        fileData.update(data)
+        file.seek(0)
+        json.dump(fileData, file)
  
 if __name__ == '__main__':
     main() 
